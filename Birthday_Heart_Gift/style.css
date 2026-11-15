@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Tiro+Bangla&display=swap');
+:root{--rose:#ff5fa8;--deep:#c2185b;--gold:#ffd9a0;--ink:#2a0627;--text:#ffeaf4}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{overflow:hidden;color:var(--text);background:radial-gradient(ellipse at 50% 38%,#7a1560 0%,#40093a 45%,#1d0420 100%);font-family:'Hind Siliguri',sans-serif}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.glow{position:fixed;width:70vmax;height:70vmax;border-radius:50%;z-index:0;will-change:transform;animation:drift 16s ease-in-out infinite alternate}
+.g1{background:radial-gradient(circle,#ff3f9a88,#ff3f9a00 65%);top:-30vmax;left:-25vmax}
+.g2{background:radial-gradient(circle,#9a4dff77,#9a4dff00 65%);bottom:-32vmax;right:-25vmax;animation-delay:-8s}
+@keyframes drift{to{transform:translate3d(8vmax,6vmax,0) scale(1.12)}}
+.page{position:relative;z-index:2;height:100%;display:grid;place-items:center;padding:20px;overflow-y:auto}
+.intro,.card{width:min(92vw,480px);display:flex;flex-direction:column;align-items:center;text-align:center}
+.hidden{display:none}
+.intro.leaving{animation:leave .6s ease forwards}
+@keyframes leave{to{opacity:0;transform:scale(1.5)}}
+
+.gift{position:relative;width:132px;height:132px;border:0;border-radius:50%;cursor:pointer;color:#fff;
+  background:radial-gradient(circle at 35% 30%,#ff8cc4,var(--deep));box-shadow:0 0 40px #ff3f97cc;will-change:transform;
+  animation:beat 1.6s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
+.gift:focus-visible{outline:3px solid var(--gold);outline-offset:8px}
+.gift-heart{font-size:64px;line-height:132px;}
+.ring{position:absolute;inset:0;border-radius:50%;border:2px solid var(--rose);animation:ripple 2.4s ease-out infinite}
+.r2{animation-delay:1.2s}
+@keyframes ripple{from{transform:scale(1);opacity:.8}to{transform:scale(2.6);opacity:0}}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
+h1{font-family:'Tiro Bangla','Hind Siliguri',serif;font-weight:400;font-size:clamp(26px,6vw,38px);line-height:1.4;margin:48px 0 10px;}
+.hint{margin:0;color:#e9b3cf;animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+
+.card.show>*{animation:rise .9s cubic-bezier(.2,1.3,.4,1) both}
+.card.show>*:nth-child(2){animation-delay:.25s}
+.card.show>*:nth-child(3){animation-delay:.45s}
+.card.show>*:nth-child(4){animation-delay:.6s}
+.card.show>*:nth-child(5){animation-delay:.8s}
+.card.show>*:nth-child(6){animation-delay:1s}
+@keyframes rise{from{opacity:0;transform:translateY(40px) scale(.6)}}
+.photo{will-change:transform;position:relative;width:min(62vw,250px);aspect-ratio:1;margin-bottom:22px;animation:rise .9s cubic-bezier(.2,1.3,.4,1) both,float 5s ease-in-out 1s infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.photo img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);border-radius:50%;object-fit:cover;object-position:center 30%;border:4px solid var(--ink)}
+.photo::before{content:'';position:absolute;inset:-26%;border-radius:50%;background:radial-gradient(circle,#ff5fa8aa,#ff5fa800 65%)}
+.photo-ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--rose),var(--gold),#b36bff,var(--rose));animation:spin 6s linear infinite;will-change:transform}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orbit{position:absolute;inset:0;color:var(--rose);font-size:22px;animation:orbit 7s linear infinite;will-change:transform}
+.o2{color:var(--gold);animation-duration:9s;animation-direction:reverse}
+.o3{animation-duration:11s;animation-delay:-4s;font-size:16px}
+@keyframes orbit{from{transform:rotate(0) translateX(calc(min(31vw,125px) + 20px)) rotate(0)}to{transform:rotate(360deg) translateX(calc(min(31vw,125px) + 20px)) rotate(-360deg)}}
+.orbit{top:50%;left:50%;inset:auto;margin:-11px 0 0 -8px}
+.title{font-family:'Tiro Bangla',serif;font-weight:400;margin:0 0 12px;font-size:clamp(38px,10vw,58px);
+  background:linear-gradient(90deg,#ff7ab8,var(--gold),#d79bff,#ff7ab8);-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise .9s both}
+.wish{margin:0 0 8px;font-size:clamp(16px,4vw,19px);line-height:1.8;color:#ffd6e8;max-width:30em}
+.sign{margin-top:12px;color:var(--gold);font-family:'Tiro Bangla',serif;font-size:21px}
+.replay{margin-top:22px;padding:10px 24px;border-radius:99px;border:1px solid #ffffff44;background:#ffffff12;color:#fff;font:inherit;cursor:pointer;transition:background .2s}
+.replay:hover{background:#ffffff26}
+.replay:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.glow,.photo,.orbit,.ring,.title,.hint,.gift{animation:none}}
